@@ -7,15 +7,27 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 public class Main {
     public static void main(String[] args) {
-        ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+//        ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+//
+//        GreetingService greetingService =  context.getBean(GreetingService.class);
+//        greetingService.sayHello();
+//
+//        UserService userService = context.getBean(UserService.class);
+//        userService.notifyUser("hey what's up!");
+//
+//        UserService userService1 =context.getBean(UserService.class);
+//        userService1.notifyUser("hello");
 
-        GreetingService greetingService =  context.getBean(GreetingService.class);
-        greetingService.sayHello();
 
-        UserService userService = context.getBean(UserService.class);
-        userService.notifyUser("hey what's up!");
+        System.out.println("Starting spring application:");
+        ApplicationContext context  = new AnnotationConfigApplicationContext(AppConfig.class);
 
-        UserService userService1 =context.getBean(UserService.class);
-        userService1.notifyUser("hello");
+        System.out.println("Retriving bean");
+        BeanLifeCycle beanLifeCycle  = context.getBean(BeanLifeCycle.class);
+
+        beanLifeCycle.performTask();
+
+        System.out.println("CleanUp");
+        beanLifeCycle.cleanUp();
     }
 }
